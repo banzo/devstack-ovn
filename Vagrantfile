@@ -6,7 +6,7 @@ require 'yaml'
 vagrant_config = YAML.load_file("config.yml")
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/vivid64"
+  config.vm.box = vagrant_config['box']
 
   if Vagrant.has_plugin?("vagrant-cachier")
     # Configure cached packages to be shared between instances of the same base box.
@@ -25,6 +25,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "devstack-2" do |d2|
     d2.vm.network "private_network", ip: vagrant_config['devstack-2']['ip']
-    d2.vm.provision "shell", path: "provision/setup-devstack.sh", privileged: false, :args => "SERVICE_HOST #{vagrant_config['devstack-1']['ip']}"
+    d2.vm.provision "shell", path: "provision/setup-devstack.sh", privileged: false, :args => "SERVICE_HOST=#{vagrant_config['devstack-1']['ip']}"
   end
 end

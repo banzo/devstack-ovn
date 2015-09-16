@@ -1,7 +1,7 @@
 Devstack OVN
 =======
 
-Setup 2 Devstack virtual machines using OVN
+Launch 2 Ubuntu virtual machines using Virtualbox, an instance of Devstack is installed on each VM and using OVN as backend for Open vSwitch
 
 This automates the setup described here: http://blog.russellbryant.net/2015/05/14/an-ez-bake-ovn-for-openstack/
 
@@ -22,6 +22,7 @@ Next steps
 ------
 
 * use another provisioner than bash scripts, maybe merge back into the existing vagrant-devstack projects (see References), but they were not working properly when I tried.
+* add provisioning scripts for CentOS/Fedora
 
 References
 ------

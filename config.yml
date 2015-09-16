@@ -1,4 +1,5 @@
 ---
+box: "ubuntu/vivid64"
 devstack-1:
   ip: "192.168.33.101"
 devstack-2:
