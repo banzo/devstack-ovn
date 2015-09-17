@@ -21,7 +21,8 @@ vagrant ssh devstack-1
 Next steps
 ------
 
-* use another provisioner than bash scripts, maybe merge back into the existing vagrant-devstack projects (see References), but they were not working properly when I tried.
+* use another provisioner than bash scripts
+* maybe merge back into the existing vagrant-devstack projects (see References), but they were not working properly when I tried (maybe related to https://ask.openstack.org/en/question/59404/stacksh-hangs-on-git-clone-to-optstacknova/).
 * add provisioning scripts for CentOS/Fedora
 
 References

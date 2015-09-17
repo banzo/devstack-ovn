@@ -14,17 +14,23 @@ Vagrant.configure(2) do |config|
     config.cache.scope = :box
   end
 
-  config.vm.provider "virtualbox" do |vb|
-     vb.memory = "4096"
-  end
-
   config.vm.define "devstack-1" do |d1|
+    d1.vm.host_name = vagrant_config['devstack-1']['host_name']
     d1.vm.network "private_network", ip: vagrant_config['devstack-1']['ip']
     d1.vm.provision "shell", path: "provision/setup-devstack.sh", privileged: false
+    config.vm.provider "virtualbox" do |vb|
+       vb.memory = vagrant_config['devstack-1']['memory']
+       vb.cpus = vagrant_config['devstack-1']['cpus']
+    end
   end
 
   config.vm.define "devstack-2" do |d2|
+    d2.vm.host_name = vagrant_config['devstack-2']['host_name']
     d2.vm.network "private_network", ip: vagrant_config['devstack-2']['ip']
     d2.vm.provision "shell", path: "provision/setup-devstack.sh", privileged: false, :args => "SERVICE_HOST=#{vagrant_config['devstack-1']['ip']}"
+    config.vm.provider "virtualbox" do |vb|
+       vb.memory = vagrant_config['devstack-2']['memory']
+       vb.cpus = vagrant_config['devstack-2']['cpus']
+    end
   end
 end
