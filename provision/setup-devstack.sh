@@ -14,4 +14,6 @@ cp networking-ovn/devstack/local.conf.sample devstack/local.conf
 if [ "$1" != "" ]; then
     echo $1 >> devstack/local.conf
 fi
+# openstack git repo is not very responsive (see https://ask.openstack.org/en/question/59404/stacksh-hangs-on-git-clone-to-optstacknova/ e.g.)
+echo "GIT_BASE=git://github.com" >> devstack/local.conf
 devstack/stack.sh
