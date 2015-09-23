@@ -1,7 +1,9 @@
 Devstack OVN
 =======
 
-Launch 2 Ubuntu virtual machines using Virtualbox, an instance of Devstack is installed on each VM and using OVN as backend for Open vSwitch
+Launch 2 Ubuntu VM's: the main one contains a full devstack and the other adds a compute node to it.
+OVN is used as the Open vSwitch backend.
+
 
 This automates the setup described here: http://blog.russellbryant.net/2015/05/14/an-ez-bake-ovn-for-openstack/
 
