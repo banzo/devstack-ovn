@@ -14,26 +14,26 @@ Vagrant.configure(2) do |config|
     config.cache.scope = :box
   end
 
-  config.vm.define "devstack-1" do |d1|
-    d1.vm.host_name = vagrant_config['devstack-1']['host_name']
-    d1.vm.network "private_network", ip: vagrant_config['devstack-1']['ip']
+  config.vm.define "devstack_controller" do |d1|
+    d1.vm.host_name = vagrant_config['devstack_controller']['host_name']
+    d1.vm.network "private_network", ip: vagrant_config['devstack_controller']['ip']
     d1.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
     d1.vm.provision "shell", path: "provision/setup-controller.sh", privileged: false
 
     config.vm.provider "virtualbox" do |vb|
-       vb.memory = vagrant_config['devstack-1']['memory']
-       vb.cpus = vagrant_config['devstack-1']['cpus']
+       vb.memory = vagrant_config['devstack_controller']['memory']
+       vb.cpus = vagrant_config['devstack_controller']['cpus']
     end
   end
 
-  config.vm.define "devstack-1-compute" do |d1c|
-    d1c.vm.host_name = vagrant_config['devstack-1-compute']['host_name']
-    d1c.vm.network "private_network", ip: vagrant_config['devstack-1-compute']['ip']
+  config.vm.define "devstack_compute" do |d1c|
+    d1c.vm.host_name = vagrant_config['devstack_compute']['host_name']
+    d1c.vm.network "private_network", ip: vagrant_config['devstack_compute']['ip']
     d1c.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
-    d1c.vm.provision "shell", path: "provision/setup-compute.sh", privileged: false, :args => "#{vagrant_config['devstack-1']['ip']}"
+    d1c.vm.provision "shell", path: "provision/setup-compute.sh", privileged: false, :args => "#{vagrant_config['devstack_controller']['ip']}"
     config.vm.provider "virtualbox" do |vb|
-       vb.memory = vagrant_config['devstack-1-compute']['memory']
-       vb.cpus = vagrant_config['devstack-1-compute']['cpus']
+       vb.memory = vagrant_config['devstack_compute']['memory']
+       vb.cpus = vagrant_config['devstack_compute']['cpus']
     end
   end
 end
