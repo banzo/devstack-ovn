@@ -14,11 +14,11 @@ Vagrant.configure(2) do |config|
     config.cache.scope = :box
   end
 
-  config.vm.define "devstack_controller" do |d1|
-    d1.vm.host_name = vagrant_config['devstack_controller']['host_name']
-    d1.vm.network "private_network", ip: vagrant_config['devstack_controller']['ip']
-    d1.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
-    d1.vm.provision "shell", path: "provision/setup-controller.sh", privileged: false
+  config.vm.define "devstack_controller" do |devstack_controller|
+    devstack_controller.vm.host_name = vagrant_config['devstack_controller']['host_name']
+    devstack_controller.vm.network "private_network", ip: vagrant_config['devstack_controller']['ip']
+    devstack_controller.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
+    devstack_controller.vm.provision "shell", path: "provision/setup-controller.sh", privileged: false
 
     config.vm.provider "virtualbox" do |vb|
        vb.memory = vagrant_config['devstack_controller']['memory']
@@ -26,11 +26,11 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  config.vm.define "devstack_compute" do |d1c|
-    d1c.vm.host_name = vagrant_config['devstack_compute']['host_name']
-    d1c.vm.network "private_network", ip: vagrant_config['devstack_compute']['ip']
-    d1c.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
-    d1c.vm.provision "shell", path: "provision/setup-compute.sh", privileged: false, :args => "#{vagrant_config['devstack_controller']['ip']}"
+  config.vm.define "devstack_compute" do |devstack_compute|
+    devstack_compute.vm.host_name = vagrant_config['devstack_compute']['host_name']
+    devstack_compute.vm.network "private_network", ip: vagrant_config['devstack_compute']['ip']
+    devstack_compute.vm.provision "shell", path: "provision/setup-base.sh", privileged: false
+    devstack_compute.vm.provision "shell", path: "provision/setup-compute.sh", privileged: false, :args => "#{vagrant_config['devstack_controller']['ip']}"
     config.vm.provider "virtualbox" do |vb|
        vb.memory = vagrant_config['devstack_compute']['memory']
        vb.cpus = vagrant_config['devstack_compute']['cpus']
