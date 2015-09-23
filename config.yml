@@ -3,10 +3,20 @@ box: "ubuntu/vivid64"
 devstack_controller:
   host_name: devstack.controller.dev
   ip: "192.168.33.101"
-  memory: 4096
+  memory: 2048
   cpus: 2
 devstack_compute:
   host_name: devstack.compute.dev
   ip: "192.168.33.102"
-  memory: 1024
+  memory: 512
+  cpus: 1
+devstack_controller2:
+  host_name: devstack.controller2.dev
+  ip: "192.168.33.201"
+  memory: 2048
+  cpus: 2
+devstack_compute2:
+  host_name: devstack.compute2.dev
+  ip: "192.168.33.202"
+  memory: 512
   cpus: 1
