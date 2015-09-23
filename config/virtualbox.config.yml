@@ -1,12 +1,12 @@
 ---
 box: "ubuntu/vivid64"
-devstack-1:
-  host_name: devstack-1
+devstack_controller:
+  host_name: devstack.controller.dev
   ip: "192.168.33.101"
   memory: 4096
   cpus: 2
-devstack-1-compute:
-  host_name: devstack-1-compute
+devstack_compute:
+  host_name: devstack.compute.dev
   ip: "192.168.33.102"
   memory: 1024
   cpus: 1

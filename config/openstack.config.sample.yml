@@ -1,0 +1,36 @@
+box: dummy
+box_url: "https://github.com/cloudbau/vagrant-openstack-plugin/raw/master/dummy.box"
+
+# Your openstack user
+username: EDIT_HERE
+
+# Your openstack password
+api_key: EDIT_HERE
+
+# KP name as stored in Nova
+keypair_name: EDIT_HERE
+
+# Path to the KP on your local machine
+ssh_private_key_path: EDIT_HERE
+
+# login for the VM, e.g. fedora, ubuntu, ...
+ssh_username: EDIT_HERE
+
+# Set the image to use e.g. 7be680ab-87d8-4cbe-af6a-c2d90cf30251
+image: EDIT_HERE
+
+# Set the Keystone endpoint, e.g. http://192.168.202.101:5000/v2.0/tokens
+endpoint: EDIT_HERE
+
+# Set the size of the instance, e.g. m1.small
+flavor: m1.small
+
+# The project/tenant you want to create the instance in
+tenant: EDIT_HERE
+network: EDIT_HERE
+
+# Floating IP to associate to the VM
+floating_ip: EDIT_HERE
+
+# name of the pool, e.g. "External"
+floating_ip_pool: External
